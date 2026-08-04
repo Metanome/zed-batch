@@ -1,0 +1,15 @@
+name = "Batch"
+grammar = "batch"
+path_suffixes = ["bat", "cmd"]
+# `::` breaks inside parenthesized blocks in cmd.exe; REM is safe everywhere.
+line_comments = ["REM ", ":: "]
+brackets = [
+    { start = "(", end = ")", close = true, newline = true },
+    { start = "\"", end = "\"", close = true, newline = false, not_in = [
+        "string",
+        "comment",
+    ] },
+]
+tab_size = 4
+hard_tabs = false
+first_line_pattern = "(?i)^(@?echo off|rem |::)"
