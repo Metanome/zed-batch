@@ -1,6 +1,6 @@
 id = "windows-batch"
 name = "Windows Batch"
-version = "0.1.0"
+version = "0.2.0"
 schema_version = 1
 authors = ["PleahMaCaka <pleahmacaka@gmail.com>"]
 description = "Windows Batch/CMD script support"
@@ -9,3 +9,7 @@ repository = "https://github.com/PleahMaCaka/zed-batch"
 [grammars.batch]
 repository = "https://github.com/wharflab/tree-sitter-batch"
 commit = "b5ebbfd167ee4bf8b8ff39d883f9db031a6898f4" # v0.11.1
+
+[language_servers.batch-language-server]
+name = "Batch Language Server"
+languages = ["Batch"]
