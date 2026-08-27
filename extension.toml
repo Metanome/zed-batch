@@ -7,8 +7,8 @@ description = "Windows Batch/CMD script support"
 repository = "https://github.com/PleahMaCaka/zed-batch"
 
 [grammars.batch]
-repository = "https://github.com/wharflab/tree-sitter-batch"
-commit = "b5ebbfd167ee4bf8b8ff39d883f9db031a6898f4" # v0.11.1
+repository = "https://github.com/pleahmacaka/tree-sitter-batch"
+commit = "01d27f527b7804b631c3ee50890a6407e68b849b" # v0.11.1 + unix-style options
 
 [language_servers.batch-language-server]
 name = "Batch Language Server"

@@ -41,6 +41,10 @@
 
 (command_option) @constant
 
+(option_separator) @operator
+
+(option_value) @string
+
 (argument_value) @string
 
 (redirect_target) @string.special
