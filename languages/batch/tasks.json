@@ -1,0 +1,23 @@
+[
+  {
+    "label": "Run $ZED_FILENAME",
+    "command": "cmd",
+    "args": ["/c", "\"$ZED_FILE\""],
+    "cwd": "$ZED_DIRNAME",
+    "save": "current",
+    "allow_concurrent_runs": true,
+    "tags": ["batch-run"]
+  },
+  {
+    "label": "Run $ZED_FILENAME as Administrator",
+    "command": "powershell",
+    "args": [
+      "-NoProfile",
+      "-Command",
+      "\"if (([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) { & '$ZED_FILE' } else { Start-Process -Verb RunAs -Wait -FilePath cmd.exe -ArgumentList '/c','cd /d `\"$ZED_DIRNAME`\" & `\"$ZED_FILE`\" > `\"$ZED_DIRNAME\\.zed-batch-run.log`\" 2>&1'; Get-Content '$ZED_DIRNAME\\.zed-batch-run.log'; Remove-Item -ErrorAction SilentlyContinue '$ZED_DIRNAME\\.zed-batch-run.log' }\""
+    ],
+    "cwd": "$ZED_DIRNAME",
+    "save": "current",
+    "tags": ["batch-run"]
+  }
+]
