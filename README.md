@@ -1,29 +1,40 @@
 ## Zed Windows Batch Extension
 
-![Zed download chart](https://zedbadge.dev/chart/windows-batch.svg)
+[![Zed download chart](https://zedbadge.dev/chart/windows-batch.svg)](https://zedbadge.dev/)  
+*Made with 💙 [ZedBadge.dev](https://zedbadge.dev/) 💙*
 
-Run `.bat` and `.cmd` files without leaving Zed. Every batch file offers two tasks:
 
-| Task | What it does |
-| --- | --- |
-| `Run <file>` | Runs the file in the terminal |
-| `Run <file> as Administrator` | Runs the file elevated, asking for UAC only when needed |
+## Running
 
-Start one from the play button on the file's first line, or from `task: spawn` (`ctrl-shift-p`). The file is saved first, runs from its own directory, and an elevated run echoes its output into the task's terminal.
+Click the play button on the first line, or pick a task from `task: spawn`.
 
-To run with a key, bind `editor::SpawnNearestTask` in your `keymap.json`:
+`Run <file> as Administrator` opens a separate elevated window by default. 
+To keep it in Zed's terminal, set 
+[sudo for Windows](https://learn.microsoft.com/en-us/windows/advanced-settings/sudo) 
+to Inline (Windows 11 24H2+). Run this once in an elevated terminal:
+
+```
+sudo config --enable normal
+```
+
+To run with F7 and as Administrator with Ctrl+F7 in batch files, add this to `keymap.json`.
+Keep `$ZED_FILENAME` as written:
 
 ```json
 {
-  "context": "Workspace",
+  "context": "Editor && (extension == bat || extension == cmd)",
   "bindings": {
-    "f5": "editor::SpawnNearestTask"
+    "f7": "editor::SpawnNearestTask",
+    "ctrl-f7": ["task::Spawn", { "task_name": "Run $ZED_FILENAME as Administrator" }]
   }
 }
 ```
 
+Any other key works too, such as F5. Pick one that isn't already bound,
+since this binding overrides it in batch files. F5, for example, is Zed's debugger key.
+
 ## Author
-![Zed author badge](https://zedbadge.dev/author/pleahmacaka.svg)  
+[![Zed author badge](https://zedbadge.dev/author/pleahmacaka.svg)](https://zedbadge.dev/)  
 
 ## License
 
